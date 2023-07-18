@@ -7,15 +7,22 @@ int main(int argc, char **argv)
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow(
-        EMULATOR_WINDOW_TITLE,
+        WINDOW_TITLE,
         SDL_WINDOWPOS_UNDEFINED, // x position window will apear on screen
         SDL_WINDOWPOS_UNDEFINED, // y position window will apear on screen
-        CHIP8_WIDTH*CHIP8_WINDOW_MULTIPLIER, 
-        CHIP8_HEIGHT*CHIP8_WINDOW_MULTIPLIER,
+        C8_WIDTH*WINDOW_SCALE, 
+        C8_HEIGHT*WINDOW_SCALE,
         SDL_WINDOW_SHOWN
     );
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_TEXTUREACCESS_TARGET);
+
+
+    char * mamamia = "240 vezes AIIIII";
+    printf("hello world!\n");
+    printf("incrivel posso debugar no terminal ");
+    printf(mamamia);
+
 
     while (1){
 
