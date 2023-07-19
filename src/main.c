@@ -5,6 +5,11 @@
 int main(int argc, char **argv)
 {
 
+    struct chip8 chip8;
+    chip8_memory_set(&chip8.memory, 50, 'Z' );
+    printf("%c\n", chip8_memory_get(&chip8.memory, 50));
+
+
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow(
         WINDOW_TITLE,
@@ -17,11 +22,6 @@ int main(int argc, char **argv)
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_TEXTUREACCESS_TARGET);
 
-
-    char * mamamia = "240 vezes AIIIII";
-    printf("hello world!\n");
-    printf("incrivel posso debugar no terminal ");
-    printf(mamamia);
 
 
     while (1){

@@ -4,9 +4,11 @@
 
 
 #include "config.h"
+#include "chip8memory.h"
 struct  chip8
 {
-    
+    struct chip8_memory memory;
+
 };
 
 #endif
