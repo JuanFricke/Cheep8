@@ -3,13 +3,13 @@
 
 #include "config.h"
 
-struct chip8_memory {
-    unsigned char memory[C8_MEM_SIZE];
+struct chip8_ram {
+    unsigned char ram[C8_RAM_SIZE];
 
 };
 
-void chip8_memory_set(struct chip8_memory* memory, int index, unsigned char val);
-unsigned char chip8_memory_get(struct chip8_memory* memory, int index);
+void chip8_ram_set(struct chip8_ram* ram, int index, unsigned char val);
+unsigned char chip8_ram_get(struct chip8_ram* ram, int index);
 
 
 

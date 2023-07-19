@@ -2,13 +2,12 @@
 #include "SDL2/SDL.h"
 #include "chip8.h"
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
 
     struct chip8 chip8;
-    chip8.registers.V[0x0f] = 50;
-    chip8_memory_set(&chip8.memory, 50, 'Z' );
-    printf("%c\n", chip8_memory_get(&chip8.memory, 50));
+    chip8.registers.v[0x0f] = 50;
+    chip8_ram_set(&chip8.ram, 50, 'Z' );
+    printf("%c\n", chip8_ram_get(&chip8.ram, 50));
 
 
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -16,8 +15,8 @@ int main(int argc, char **argv)
         WINDOW_TITLE,
         SDL_WINDOWPOS_UNDEFINED, // x position window will apear on screen
         SDL_WINDOWPOS_UNDEFINED, // y position window will apear on screen
-        C8_WIDTH*WINDOW_SCALE, 
-        C8_HEIGHT*WINDOW_SCALE,
+        C8_SCREEN_WIDTH*WINDOW_SCALE, 
+        C8_SCREEN_HEIGHT*WINDOW_SCALE,
         SDL_WINDOW_SHOWN
     );
 
@@ -42,10 +41,14 @@ int main(int argc, char **argv)
         SDL_RenderClear(renderer);
 
         // ------------------------- //
+
+
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
         SDL_Rect r;
-        r.x = 0; r.y = 0; // position on window
-        r.w = 40; r.h = 40; // size of rect
+        // position on window
+        {r.x = 0; r.y = 0;} 
+        // size of rect
+        {r.w = 40; r.h = 40;} 
         SDL_RenderFillRect(renderer, &r);
         SDL_RenderPresent(renderer);
     }

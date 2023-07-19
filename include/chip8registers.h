@@ -5,7 +5,7 @@
 #include "config.h"
 struct chip8_registers
 {
-    unsigned char V[C8_DATA_REGISTERS];
+    unsigned char v[C8_DATA_REGISTERS];
 };
 
 
