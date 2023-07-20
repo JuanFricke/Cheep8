@@ -4,6 +4,7 @@
 
 static void chip8_stack_in_bounds(struct chip8* chip8){
     
+    assert(chip8->registers.sp < C8_STACK_DEPTH);
 }
 
 void chip8_stack_push(struct chip8* chip8, unsigned short val){
