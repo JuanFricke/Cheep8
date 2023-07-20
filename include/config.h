@@ -10,5 +10,6 @@
 #define C8_DATA_REGISTERS 16
 #define C8_STACK_DEPTH 16
 #define C8_MAX_KEYS 16
+#define C8_CHARSET_LOAD_ADRESS 0x00
 
 #endif

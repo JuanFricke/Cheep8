@@ -15,6 +15,8 @@ const char keyboard_map[C8_MAX_KEYS] = {
 int main(int argc, char **argv){
 
     struct chip8 chip8;
+    chip8_init(&chip8);
+
     
 
 
