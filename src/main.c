@@ -3,6 +3,7 @@
 #include "SDL2/SDL.h"
 #include "chip8.h"
 #include "chip8keyboard.h"
+#include "chip8screen.h"
 
 
 const char keyboard_map[C8_MAX_KEYS] = {
@@ -15,10 +16,11 @@ const char keyboard_map[C8_MAX_KEYS] = {
 int main(int argc, char **argv){
 
     struct chip8 chip8;
+
     chip8_init(&chip8);
 
     
-
+    chip8_screen_set(&chip8.screen, 10,1);
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow(
@@ -75,22 +77,37 @@ int main(int argc, char **argv){
             
         }
 
+
         // ----- screen reset ------ //
         
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
         SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 10, 255, 20, 0.1); // screen color
 
         // ------------------------- //
 
-
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
-        SDL_Rect r;
-        // position on window
-        {r.x = 0; r.y = 0;} 
-        // size of rect
-        {r.w = 40; r.h = 40;} 
-        SDL_RenderFillRect(renderer, &r);
+        for (int x = 0; x < C8_SCREEN_WIDTH; x++)
+        {
+            for (int y = 0; y < C8_SCREEN_HEIGHT; y++)
+            {
+                if (chip8_screen_is_set(&chip8.screen, x, y))
+                {
+                    SDL_Rect r;
+                    // position on window
+                    {r.x = x*WINDOW_SCALE; r.y = y*WINDOW_SCALE;} 
+                    // size of rect
+                    {r.w = WINDOW_SCALE; r.h = WINDOW_SCALE;} 
+                    SDL_RenderFillRect(renderer, &r);
+                    
+                }
+                
+                
+            }
+            
+        }
+        
         SDL_RenderPresent(renderer);
+        
     }
     
 

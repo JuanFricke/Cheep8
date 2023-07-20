@@ -2,7 +2,7 @@
 #include "chip8keyboard.h"
 #include <assert.h>
 
-static void chip8_kb_ensure_bounds(int key){
+static void chip8_is_kb_in_bounds(int key){
 
     assert(key >=0 && key < C8_MAX_KEYS);
 }
@@ -25,6 +25,6 @@ void chip8_key_unpress(struct chip8_keyboard* keyboard, int key){
 
     keyboard->keyboard[key] = false;
 }
-bool chip8_is_key_pressed(struct chip8_keyboard* keyboard, int key){
+bool chip8_key_is_pressed(struct chip8_keyboard* keyboard, int key){
     return keyboard->keyboard[key];
 }
