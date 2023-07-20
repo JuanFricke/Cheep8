@@ -5,10 +5,13 @@
 int main(int argc, char **argv){
 
     struct chip8 chip8;
-    chip8.registers.v[0x0f] = 50;
-    chip8_ram_set(&chip8.ram, 50, 'Z' );
-    printf("%c\n", chip8_ram_get(&chip8.ram, 50));
+    
+    chip8.registers.sp =0;
+    chip8_stack_push(&chip8, 0xff);
+    chip8_stack_push(&chip8, 0xaa);
 
+    printf("%x\n", chip8_stack_pop(&chip8));
+    printf("%x\n", chip8_stack_pop(&chip8));
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow(

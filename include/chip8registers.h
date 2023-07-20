@@ -6,6 +6,11 @@
 struct chip8_registers
 {
     unsigned char v[C8_DATA_REGISTERS];
+    unsigned short I;
+    unsigned char delayTimer;
+    unsigned char soundTimer;
+    unsigned short pc;
+    unsigned char sp;
 };
 
 
