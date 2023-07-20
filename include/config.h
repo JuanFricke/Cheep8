@@ -1,10 +1,15 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define EMULATOR_WINDOW_TITLE "Cheep8 Emulator"
-#define CHIP8_MEMORY_SIZE 4096
-#define CHIP8_WIDTH 64
-#define CHIP8_HEIGHT 32
-#define CHIP8_WINDOW_MULTIPLIER 10
+#define WINDOW_TITLE "Cheep8 Emulator"
+#define C8_RAM_SIZE 4096
+#define C8_SCREEN_WIDTH 64
+#define C8_SCREEN_HEIGHT 32
+#define WINDOW_SCALE 10
+
+#define C8_DATA_REGISTERS 16
+#define C8_STACK_DEPTH 16
+#define C8_MAX_KEYS 16
+#define C8_CHARSET_LOAD_ADRESS 0x00
 
 #endif
