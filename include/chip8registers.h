@@ -1,7 +1,6 @@
 #ifndef CHIP8REGISTERS_H
 #define CHIP8REGISTERS_H
 
-
 #include "config.h"
 struct chip8_registers
 {
@@ -12,8 +11,5 @@ struct chip8_registers
     unsigned short pc;
     unsigned char sp;
 };
-
-
-
 
 #endif
