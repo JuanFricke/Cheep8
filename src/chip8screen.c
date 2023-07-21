@@ -1,5 +1,6 @@
 #include <assert.h>
 #include "chip8screen.h"
+#define FIRST_BIT 0b10000000
 
 static void chip8_is_screen_in_bounds(int x, int y)
 {
@@ -34,7 +35,7 @@ bool chip8_screen_draw_sprite(struct chip8_screen *screen, int x, int y, const c
         for (int lx = 0; lx < 8; lx++)
         {
 
-            if ((c & (0b100000000 >> lx)) == 0)
+            if ((c & (FIRST_BIT >> lx)) == 0)
             {
                 continue;
             }

@@ -3,7 +3,6 @@
 #include "SDL2/SDL.h"
 #include "chip8.h"
 #include "chip8keyboard.h"
-#include "chip8screen.h"
 
 const char keyboard_map[C8_MAX_KEYS] = {
     SDLK_0, SDLK_1, SDLK_2, SDLK_3,
@@ -18,7 +17,7 @@ int main(int argc, char **argv)
 
     chip8_init(&chip8);
 
-    chip8_screen_draw_sprite(&chip8.screen, 10, 10, &chip8.ram.ram[0x00], 5);
+    chip8_screen_draw_sprite(&chip8.screen, 32, 30, &chip8.ram.ram[0x00], 5);
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow(
