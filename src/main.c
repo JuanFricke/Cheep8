@@ -1,6 +1,11 @@
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#define Sleep sleep
+#endif
 #include <stdio.h>
 #include <stdbool.h>
-#include <Windows.h>
 #include "SDL2/SDL.h"
 #include "chip8.h"
 #include "chip8keyboard.h"
