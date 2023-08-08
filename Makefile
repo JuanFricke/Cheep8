@@ -1,10 +1,20 @@
 INCLUDES = -I ./include
 FLAGS = -g
 
-OBJECTS = ./build/chip8memory.o ./build/chip8stack.o ./build/chip8keyboard.o ./build/chip8.o ./build/chip8screen.o
+ifeq ($(OS),Windows_NT)
+    # Comandos para compilar no Windows
+    OBJECTS = ./build/chip8memory.o ./build/chip8stack.o ./build/chip8keyboard.o ./build/chip8.o ./build/chip8screen.o
+    LIBS = -lmingw32 -lSDL2main -lSDL2
+    EXE_EXT = .exe
+else
+    # Comandos para compilar no Linux (ou qualquer outro sistema não-Windows)
+    OBJECTS = ./build/chip8memory.o ./build/chip8stack.o ./build/chip8keyboard.o ./build/chip8.o ./build/chip8screen.o
+    LIBS = -lSDL2
+    EXE_EXT =
+endif
 
 all: ${OBJECTS}
-	gcc ${FLAGS} ${INCLUDES} ./src/main.c ${OBJECTS} -L ./lib -lmingw32 -lSDL2main -lSDL2 -o ./bin/main
+	gcc ${FLAGS} ${INCLUDES} ./src/main.c ${OBJECTS} ${LIBS} -o ./bin/main${EXE_EXT}
 
 ./build/chip8memory.o: src/chip8memory.c
 	gcc ${FLAGS} ${INCLUDES} -c ./src/chip8memory.c -o ./build/chip8memory.o
@@ -22,4 +32,4 @@ all: ${OBJECTS}
 	gcc ${FLAGS} ${INCLUDES} -c ./src/chip8screen.c -o ./build/chip8screen.o
 
 clean:
-	del build\*
+	rm -f ./build/*.o ./bin/main${EXE_EXT}
