@@ -4,7 +4,7 @@ FLAGS = -g
 ifeq ($(OS),Windows_NT)
     # Comandos para compilar no Windows
     OBJECTS = ./build/chip8memory.o ./build/chip8stack.o ./build/chip8keyboard.o ./build/chip8.o ./build/chip8screen.o
-    LIBS = -lmingw32 -lSDL2main -lSDL2
+    LIBS = -L ./lib -lmingw32 -lSDL2main -lSDL2
     EXE_EXT = .exe
 else
     # Comandos para compilar no Linux (ou qualquer outro sistema não-Windows)

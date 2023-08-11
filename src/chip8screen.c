@@ -1,6 +1,6 @@
 #include <assert.h>
 #include "chip8screen.h"
-#define FIRST_BIT 0b10000000
+#define FIRST_BIT 0b100000000
 
 static void chip8_is_screen_in_bounds(int x, int y)
 {
@@ -25,7 +25,7 @@ bool chip8_screen_is_set(struct chip8_screen *screen, int x, int y)
 bool chip8_screen_draw_sprite(struct chip8_screen *screen, int x, int y, const char *sprite, int num)
 {
 
-    bool sprite_colision = false;
+    bool sprite_collision = false;
 
     for (int ly = 0; ly < num; ly++)
     {
@@ -36,13 +36,12 @@ bool chip8_screen_draw_sprite(struct chip8_screen *screen, int x, int y, const c
         {
 
             if ((c & (FIRST_BIT >> lx)) == 0)
-            {
                 continue;
-            }
+            
 
             if (screen->pxls[(ly + y) % C8_SCREEN_HEIGHT][(lx + x) % C8_SCREEN_WIDTH])
             {
-                sprite_colision = true;
+                sprite_collision = true;
                   
             }
             
@@ -51,5 +50,5 @@ bool chip8_screen_draw_sprite(struct chip8_screen *screen, int x, int y, const c
         }
     }
 
-    return sprite_colision;
+    return sprite_collision;
 }
