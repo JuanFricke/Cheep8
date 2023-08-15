@@ -2,7 +2,10 @@
 #define CONFIG_H
 
 #define WINDOW_TITLE "Cheep8 Emulator"
+
 #define C8_RAM_SIZE 4096
+#define C8_PROGRAM_LOAD_ADDRESS 0x200
+
 #define C8_SCREEN_WIDTH 64
 #define C8_SCREEN_HEIGHT 32
 #define WINDOW_SCALE 10
