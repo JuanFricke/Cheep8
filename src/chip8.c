@@ -1,6 +1,7 @@
 
 #include "chip8.h"
 #include <memory.h>
+#include <assert.h>
 
 const char chip8_default_charset[] = {
         0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -26,4 +27,16 @@ void chip8_init(struct chip8 *chip8)
 
     memset(chip8, 0, sizeof(struct chip8));
     memcpy(&chip8->ram.ram, chip8_default_charset, sizeof(chip8_default_charset));
+}
+
+void chip8_load(struct chip8 *chip8, const char *buf, size_t size)
+{
+    assert(size + C8_PROGRAM_LOAD_ADDRESS < C8_RAM_SIZE);
+    memcpy(&chip8->ram.ram[C8_PROGRAM_LOAD_ADDRESS], buf, size);
+    chip8->registers.pc = C8_PROGRAM_LOAD_ADDRESS;
+}
+
+void chip8_exec(struct chip8 *chip8, unsigned short opcode)
+{
+
 }

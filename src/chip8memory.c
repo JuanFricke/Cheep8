@@ -16,3 +16,10 @@ unsigned char chip8_ram_get(struct chip8_ram *ram, int index)
 {
     return ram->ram[index];
 }
+
+unsigned short chip8_ram_get_short(struct chip8_ram *ram, int index)
+{
+    unsigned char byte1 = chip8_ram_get(ram, index);
+    unsigned char byte2 = chip8_ram_get(ram, index+1);
+    return byte1 << 8 | byte2;
+}
