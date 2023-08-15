@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
     struct chip8 chip8;
     chip8_init(&chip8);
-    chip8.registers.soundTimer = 255;
+    chip8.registers.soundTimer = 3;
 
     chip8_screen_draw_sprite(&chip8.screen, 32, 30, &chip8.ram.ram[0x00], 5);
 
@@ -36,7 +36,8 @@ int main(int argc, char **argv)
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_TEXTUREACCESS_TARGET);
 
-    while (1)
+    bool quit = false;
+    while (!quit)
     {
 
         SDL_Event event;
@@ -47,7 +48,8 @@ int main(int argc, char **argv)
             {
 
             case SDL_QUIT:
-                goto out;
+                //goto out;
+                quit = true;
                 break;
 
             case SDL_KEYDOWN:
@@ -119,12 +121,12 @@ int main(int argc, char **argv)
         }
 
         if (chip8.registers.soundTimer > 0){
-            Beep(8000, 100);
-            chip8.registers.soundTimer -=1;
+            Beep(2500, 100 * chip8.registers.soundTimer);
+            chip8.registers.soundTimer -= 1;
         }
     }
 
-out:
+//out:
 
     SDL_DestroyWindow(window);
     return 0;
